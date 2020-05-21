@@ -23,3 +23,19 @@ let mostPopularFood = [
 // After all the foods have been logged, the program should end.
 //
 // HINT: You'll need to use `setInterval` and `clearInterval`.
+
+
+//LOG THE FOOD IN COUNTDOWN ORDER
+let interval = setInterval(logFood, 1000);
+
+function countdown() {
+  interval();
+}
+
+function logFood(){
+  console.log(`In #${mostPopularFood.length} we have: ${mostPopularFood.pop()}!`);
+  if (mostPopularFood.length === 0) {
+    clearInterval(interval);
+  }
+}
+

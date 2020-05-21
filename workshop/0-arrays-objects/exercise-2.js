@@ -11,3 +11,11 @@ const earlyBirds = ['Ellen', 'Jerry', 'Jasmine'];
 // Output them in a tidy list from first to last arrival the console.
 
 // NO for loops!
+
+//MAKING THE COMBINED ARRAY OF PARTY PEOPLE.
+const combinedArray = [];
+earlyBirds.forEach( str => combinedArray.push(str));
+lateComers.forEach( str => combinedArray.push(str));
+
+//LOG THEM IN ORDER OF ARRIVAL
+combinedArray.forEach(str => console.log(`${str} is attendee number ${combinedArray.indexOf(str) + 1}`));
