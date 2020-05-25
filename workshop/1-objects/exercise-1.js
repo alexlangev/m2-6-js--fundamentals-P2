@@ -19,6 +19,16 @@
 // A) console.log() your object.
 // B) console.log() a few of the values in the object.
 
+let meObject = {
+  name: {first: 'Alex', last: 'Langevin'},
+  age: 29,
+  city: 'Montreal',
+  pets: [{name: 'Billy', animal: 'cat'}, {name: 'Alex', animal: 'cat'}],
+  monthOfBirth: 'September',
+};
+
+console.log(meObject);
+console.log(meObject.name, meObject.city);
 //-------------------------------------------------
 
 // Exercise A
@@ -31,6 +41,9 @@
 //     - Pets (number of pets, names of pets, etc.)
 
 // HINT: You can just modify the object that you created before.
+
+meObject.dayOfBirth = 2;
+meObject.yearOfBirth = 1990;
 
 //-------------------------------------------------
 
@@ -47,7 +60,13 @@
 // HINT: Most movies have multiple actors. What data-structure do we use to
 // represent a collection of similar things?
 
-let favoriteMovie = {};
+let favoriteMovie = {
+  title: 'Ex Machina',
+  director: 'Alex Garland',
+  yearReleased: 2014,
+  ratings: 7.7,
+  actors: ['Domhnall Gleeson','Alicia Vikander','Oscar Isaac'],
+};
 
 //-------------------------------------------------
 
@@ -62,8 +81,8 @@ const person = {
   hometown: 'somewhere',
 };
 
-person[age]; // => 26
-person.key; // => "Alyssa P. Hacker"
+person.age; // => 26
+person.name; // => "Alyssa P. Hacker"
 
 //-------------------------------------------------
 
@@ -85,7 +104,7 @@ const alyssa = {
 };
 
 function fullName(person) {
-  // Your code here
+  return `${person.name.first} ${person.name.middle} ${person.name.last}`;
 }
 
 console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
@@ -109,7 +128,11 @@ const rick = {
 };
 
 function betterFullName(person) {
-  // Your code here
+  if (person.hasOwnProperty('middle') === false){
+    return `${person.name.first} ${person.name.last}`;
+  } else {
+    return `${person.name.first} ${person.name.middle} ${person.name.last}`;
+  }
 }
 
 console.log(betterFullName(rick)); // => "Rick Sanchez"

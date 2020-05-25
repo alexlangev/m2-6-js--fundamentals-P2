@@ -88,8 +88,64 @@ For example, the main superpowers array should be:
 */
 
 function transformData(data) {
-  // Your code here
+  let modifiedData = {};
+//NO CHANGES
+  modifiedData.name = data.name;
+  modifiedData.age = data.age;
+  modifiedData.status = data.status;
+//ADDRESS
+  modifiedData.address = {
+    streetAddress: data.address1,
+    city: data.addressCity,
+    state: data.addressState,
+    country: data.addressCountry,
+  }
+//SUPERPOWERS
+  if (data.superpower1 === null && data.superpower2 === null) {
+    modifiedData.superpowers = [];
+  } else if (data.superpower1 !== null){
+    modifiedData.superpowers = [data.superpower1];
+  } else if (data.superpower2 !== null){
+    modifiedData.superpowers = [data.superpower2];
+  } else {
+    modifiedData.superpowers = [data.superpower1 ,data.superpower2];
+  }
+//RELATIONSHIPS MOTHER
+  modifiedData.relationships = [];
+  modifiedData.relationships.push({
+    type: 'mother',
+    name: data.motherName,
+    age: data.motherAge,
+    status: data.motherStatus,
+  });
+
+  modifiedData.relationships[0].superpowers = [];
+  if (data.motherSuperpower1 !== null) {
+  modifiedData.relationships[0].superpowers.push(data.motherSuperpower1);
+  }
+  if (data.motherSuperpower2 !== null) {
+    modifiedData.relationships[0].superpowers.push(data.motherSuperpower2);
+    }
+
+    //RELATIONSHIPS GF
+    modifiedData.relationships.push({
+      type: 'girldfriend',
+      name: data.girlfriendName,
+      age: data.girlfriendAge,
+      status: data.girlfriendStatus,
+    });
+  
+    modifiedData.relationships[1].superpowers = [];
+    if (data.girlfriendSuperpower1 !== null) {
+    modifiedData.relationships[1].superpowers.push(data.girlfriendSuperpower1);
+    }
+    if (data.girlfriendSuperpower2 !== null) {
+      modifiedData.relationships[1].superpowers.push(data.girlfriendSuperpower2);
+      }
+
+  return modifiedData;
 }
+
 
 /*
   `JSON.stringify` is used to "pretty-print" the output, so that it's easy
